@@ -3,7 +3,7 @@
 # Exit on any nonzero exit code (error)
 set -e
 
-# TODO enable credo per issue https://github.com/infinitered/thesis-phoenix/issues/137
+# TODO enable credo per issue https://github.com/ThaddeusJiang/thesis-phoenix/issues/137
 # mix credo --strict
 echo "----------------------------------------------------------"
 echo "Running main thesis tests..."
@@ -15,7 +15,7 @@ echo "----------------------------------------------------------"
 echo "Running Phoenix example app tests..."
 echo "----------------------------------------------------------"
 
-cd ./examples/example
+cd ./examples/example_phx_1.5
 mix test
 
 echo ✅  Tests complete
