@@ -17,7 +17,7 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="https://github.com/infinitered/thesis-phoenix">Thesis on Github</a></li>
+            <li><a href="https://github.com/ThaddeusJiang/thesis-phoenix">Thesis on Github</a></li>
             <li><a href="/">Home</a></li>
             <%= for page <- ExamplePhx.Nav.pages() do %>
               <li>

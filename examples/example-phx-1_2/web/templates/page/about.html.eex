@@ -4,7 +4,7 @@
       <h4>About Thesis</h4>
       <p>
         I created
-        <a href="https://github.com/infinitered/thesis-rails">the original Thesis</a>
+        <a href="https://github.com/ThaddeusJiang/thesis-rails">the original Thesis</a>
         (a Rails engine) in 2013. At the time (and now), the state of Rails CMS's
         was pretty barebones. There were a few options like Locomotive, Refinery,
         and Comfortable Mexican Sofa (weird name). But they all required fairly
@@ -25,7 +25,7 @@
         means you can edit it. Try clicking the edit icon on the bottom right of
         your browser, and edit this paragraph to rewrite history. :) Or click the
         blue + icon to create a new dynamic page. And I hope that you will eventually
-        <a href="https://github.com/infinitered/thesis-phoenix/graphs/contributors">
+        <a href="https://github.com/ThaddeusJiang/thesis-phoenix/graphs/contributors">
           join our growing list of contributors!
         </a>
       </p>

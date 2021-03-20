@@ -12,17 +12,10 @@ echo "----------------------------------------------------------"
 mix test
 
 echo "----------------------------------------------------------"
-echo "Running Phoenix example 1.2 app tests..."
+echo "Running Phoenix example app tests..."
 echo "----------------------------------------------------------"
 
-cd ./examples/example-phx-1_2
-mix test
-
-echo "----------------------------------------------------------"
-echo "Running Phoenix example 1.3 app tests..."
-echo "----------------------------------------------------------"
-
-cd ../example-phx-1_3
+cd ./examples/example
 mix test
 
 echo ✅  Tests complete

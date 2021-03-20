@@ -10,6 +10,6 @@ defmodule Example.ThesisAuth do
     true
 
     # Or use your own auth strategy. Learn more:
-    # https://github.com/infinitered/thesis-phoenix#authorization
+    # https://github.com/ThaddeusJiang/thesis-phoenix#authorization
   end
 end
