@@ -1,4 +1,4 @@
-defmodule <%= base %>.ThesisAuth do
+defmodule Example.ThesisAuth do
   @moduledoc """
   Contains functions for handling Thesis authorization.
   """

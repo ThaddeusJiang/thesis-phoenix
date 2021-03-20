@@ -1,0 +1,59 @@
+<section class="phx-hero">
+  <%= content(@conn, "Welcome", :html) do %>
+  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
+  <p>Peace of mind from prototype to production</p>
+  <% end %>
+</section>
+
+<section class="row">
+  <article class="column">
+      <%= content(@conn, "Resources", :html) do %>
+    <h2>Resources</h2>
+    <ul>
+      <li>
+        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
+      </li>
+    </ul>
+    <% end %>
+  </article>
+  <article class="column">
+      <%= content(@conn, "Help", :html) do %>
+    <h2>Help</h2>
+    <ul>
+      <li>
+        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+      </li>
+      <li>
+        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+      </li>
+      <li>
+        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
+      </li>
+    </ul>
+    <% end %>
+  </article>
+  <div class="column">
+    <%= content(@conn, "Dynamic Pages", :raw_html) do %>
+      <h4>Created Dynamic Pages</h4>
+      <p>This is an example of a raw HTML block.</p>
+      <p>Any dynamic pages you create will be listed below.</p>
+    <% end %>
+
+    <ul>
+      <%= for page <- @pages do %>
+        <li>
+          <a href="<%= page.slug %>"><%= page.title || "Untitled" %></a>
+        </li>
+      <% end %>
+      </ul>
+  </div>
+</section>

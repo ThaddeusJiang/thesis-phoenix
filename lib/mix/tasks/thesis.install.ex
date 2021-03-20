@@ -36,29 +36,35 @@ defmodule Mix.Tasks.Thesis.Install do
     thesis_config()
     thesis_web()
 
-    status_msg("done",
-      "Now run #{IO.ANSI.blue}mix ecto.migrate#{IO.ANSI.reset} to ensure your database is up to date.")
+    status_msg(
+      "done",
+      "Now run #{IO.ANSI.blue()}mix ecto.migrate#{IO.ANSI.reset()} to ensure your database is up to date."
+    )
   end
 
   @doc false
   def thesis_templates do
-    migration_files = @migrations
-                      |> Enum.filter(&migration_missing?/1)
-                      |> Enum.with_index
-                      |> Enum.map(&migration_tuple/1)
+    migration_files =
+      @migrations
+      |> Enum.filter(&migration_missing?/1)
+      |> Enum.with_index()
+      |> Enum.map(&migration_tuple/1)
+
     all_templates = @template_files ++ migration_files
 
     all_templates
     |> Stream.map(&render_eex/1)
-    |> Stream.map(&replace_yourapp(&1, to_string(Mix.Phoenix.otp_app))) # TODO: better way to infer app path?
+    # TODO: better way to infer app path?
+    |> Stream.map(&replace_yourapp(&1, to_string(Mix.Phoenix.otp_app())))
     |> Stream.map(&copy_to_target/1)
-    |> Stream.run
+    |> Stream.run()
   end
 
   @doc false
   def thesis_config do
     status_msg("updating", "config/config.exs")
-    dest_file_path = Path.join [File.cwd! | ~w(config config.exs)]
+    dest_file_path = Path.join([File.cwd!() | ~w(config config.exs)])
+
     dest_file_path
     |> File.read!()
     |> insert_thesis()
@@ -74,8 +80,8 @@ defmodule Mix.Tasks.Thesis.Install do
     phx_13 = List.first(Path.wildcard("lib/*_web.ex")) || ""
 
     dest_file_path =
-      (File.exists?(phx_12) && phx_12)
-      || (File.exists?(phx_13) && phx_13)
+      (File.exists?(phx_12) && phx_12) ||
+        (File.exists?(phx_13) && phx_13)
 
     if dest_file_path do
       dest_file_path
@@ -85,7 +91,10 @@ defmodule Mix.Tasks.Thesis.Install do
       |> insert_router()
       |> overwrite_file(dest_file_path)
     else
-      status_msg("warning", "couldn't find web.ex! See https://github.com/infinitered/thesis-phoenix/blob/master/README_INSTALL.md.")
+      status_msg(
+        "warning",
+        "couldn't find web.ex! See https://github.com/ThaddeusJiang/thesis-phoenix/blob/master/README_INSTALL.md."
+      )
     end
   end
 
@@ -107,8 +116,8 @@ defmodule Mix.Tasks.Thesis.Install do
     else
       match =
         Regex.scan(~r/def #{block} do\n\s.+end\n\s*end/Usm, source)
-        |> List.flatten
-        |> List.first
+        |> List.flatten()
+        |> List.first()
 
       if match do
         inserted = String.replace(match, "    end\n  end", "#{insertion}    end\n  end")
@@ -128,46 +137,49 @@ defmodule Mix.Tasks.Thesis.Install do
   # end
 
   defp insert_thesis(source) do
-    if String.contains? source, "config :thesis," do
+    if String.contains?(source, "config :thesis,") do
       status_msg("skipping", "thesis config. It already exists.")
       :skip
     else
-      source <> """
+      source <>
+        """
 
-      # Thesis Main Config
-      config :thesis,
-        store: Thesis.EctoStore,
-        authorization: #{Mix.Phoenix.base}.ThesisAuth,
-        uploader: Thesis.RepoUploader
+        # Thesis Main Config
+        config :thesis,
+          store: Thesis.EctoStore,
+          authorization: #{Mix.Phoenix.base()}.ThesisAuth,
+          uploader: Thesis.RepoUploader
 
-      # Thesis Store Config
-      config :thesis, Thesis.EctoStore, repo: #{Mix.Phoenix.base}.Repo
+        # Thesis Store Config
+        config :thesis, Thesis.EctoStore, repo: #{Mix.Phoenix.base()}.Repo
 
-      # Thesis Notifications Config
-      # config :thesis, :notifications,
-      #   add_page: [],
-      #   page_settings: [],
-      #   import_export_restore: []
+        # Thesis Notifications Config
+        # config :thesis, :notifications,
+        #   add_page: [],
+        #   page_settings: [],
+        #   import_export_restore: []
 
-      # Thesis Dynamic Pages Config
-      # config :thesis, :dynamic_pages,
-      #   view: #{Mix.Phoenix.base}Web.PageView,
-      #   templates: ["index.html", "otherview.html"],
-      #   not_found_view: #{Mix.Phoenix.base}Web.ErrorView,
-      #   not_found_template: "404.html"
-      
-      """
+        # Thesis Dynamic Pages Config
+        # config :thesis, :dynamic_pages,
+        #   view: #{Mix.Phoenix.base()}Web.PageView,
+        #   templates: ["index.html", "otherview.html"],
+        #   not_found_view: #{Mix.Phoenix.base()}Web.ErrorView,
+        #   not_found_template: "404.html"
+
+        """
     end
   end
 
   defp migration_missing?(filename) do
     "priv/repo/migrations"
-    |> File.ls!
-    |> Enum.all?(fn (f) -> !String.contains?(f, filename) end)
+    |> File.ls!()
+    |> Enum.all?(fn f -> !String.contains?(f, filename) end)
   end
 
   defp migration_tuple({filename, i}) do
     ts = String.to_integer(timestamp()) + i
-    {"priv/templates/thesis.install/#{filename}.exs", "priv/repo/migrations/#{ts}_#{filename}.exs"}
+
+    {"priv/templates/thesis.install/#{filename}.exs",
+     "priv/repo/migrations/#{ts}_#{filename}.exs"}
   end
 end

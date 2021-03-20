@@ -1,8 +1,12 @@
 # Thesis
 
-## Why is this archived?
+Thesis is an awesome project, I am going to maintain it.
 
-We really appreciate all the community support in the years since we first released thesis-phoenix. Our focus has shifted from Elixer/Phoenix to React Native. Feel free to fork this library and continue on its legacy if you want. 
+Currently required Node.js v10.
+
+~~## Why is this archived?~~
+
+~~We really appreciate all the community support in the years since we first released thesis-phoenix. Our focus has shifted from Elixer/Phoenix to React Native. Feel free to fork this library and continue on its legacy if you want.~~
 
 
 ## What Is Thesis?
@@ -133,7 +137,7 @@ class MyCustomEditor {
 }
 ```
 
-For more detail, check out [HtmlEditor](https://github.com/infinitered/thesis-phoenix/tree/master/assets/js/content_types/html_editor.js) or [this gist](https://gist.github.com/ryanlntn/ac346d361d9e10a8f1888bf59cea0e37) implementing a custom editor using [Trumbowyg](https://alex-d.github.io/Trumbowyg/).
+For more detail, check out [HtmlEditor](https://github.com/ThaddeusJiang/thesis-phoenix/tree/master/assets/js/content_types/html_editor.js) or [this gist](https://gist.github.com/ryanlntn/ac346d361d9e10a8f1888bf59cea0e37) implementing a custom editor using [Trumbowyg](https://alex-d.github.io/Trumbowyg/).
 
 To enable, add this in your config/config.exs file:
 
@@ -241,7 +245,7 @@ config :thesis,
 ```
 
 The module should have an `upload/1` function that accepts a `%Plug.Upload{}` struct. This function should return either `{:ok, "path/to/file.jpg"}` tuple with an image url or path, or `{:error, _}`. You can view
-[/lib/thesis/uploaders/repo_uploader.ex](https://github.com/infinitered/thesis-phoenix/blob/master/lib/thesis/uploaders/repo_uploader.ex)
+[/lib/thesis/uploaders/repo_uploader.ex](https://github.com/ThaddeusJiang/thesis-phoenix/blob/master/lib/thesis/uploaders/repo_uploader.ex)
 for an example.
 
 That's it! Restart your server and image content areas will now contain a
@@ -448,7 +452,7 @@ config :thesis, :notifications,
   import_export_restore: &MyApp.CustomModule.import_warning/1
 ```
 
-In either case, there are only 2 things that matter: 1 - you must provide a List of String(s) for each notification type, whether static or the result of a custom function; 2 - if you are using a custom function, it must be able to accept 1 argument: a `%Plug.Conn{}` struct. You can see an example [here](https://github.com/infinitered/thesis-phoenix/blob/master/examples/example-phx-1_3/lib/example_phx/notifications.ex).
+In either case, there are only 2 things that matter: 1 - you must provide a List of String(s) for each notification type, whether static or the result of a custom function; 2 - if you are using a custom function, it must be able to accept 1 argument: a `%Plug.Conn{}` struct. You can see an example [here](https://github.com/ThaddeusJiang/thesis-phoenix/blob/master/examples/example-phx-1_3/lib/example_phx/notifications.ex).
 
 <strong>Note</strong>: right now, there are 3 spots to which you can push notifications: the '[Add New Page](https://user-images.githubusercontent.com/1775841/38072348-acfb3d46-32da-11e8-8fed-97b5d17ba027.png)' tray, '[Page Settings](https://user-images.githubusercontent.com/1775841/38072314-8b056a86-32da-11e8-8e75-df4383eabdee.png)' tray, and '[Import/Export/Restore](https://user-images.githubusercontent.com/1775841/38072274-67b43a62-32da-11e8-8752-664930d4ce9d.png)' tray. As more features are developed, the notifications will be extended to support those features as well.
 
@@ -499,7 +503,7 @@ websites. Please help us improve!
 
 # ![](http://placehold.it/890x200/2b1e34/ffffff?text=-%20%20%20%20%20%20Premium+Support%20%20%20%20%20%20-)
 
-[Thesis Phoenix](https://github.com/infinitered/thesis-phoenix), as an open source project, is free to use and always will be. [Infinite Red](https://infinite.red/) offers premium Thesis Phoenix support and general web app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
+[Thesis Phoenix](https://github.com/ThaddeusJiang/thesis-phoenix), as an open source project, is free to use and always will be. [Infinite Red](https://infinite.red/) offers premium Thesis Phoenix support and general web app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
 <br/>
 
 ---
