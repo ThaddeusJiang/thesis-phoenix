@@ -20,12 +20,12 @@ command -v npm >/dev/null 2>&1 || {
 }
 
 # Ensure Chromedriver is installed
-command -v chromedriver >/dev/null 2>&1 || {
-  echo "This app requires chromedriver to be installed, but it was not found on your system."
-  echo "If you have HomeBrew, install with this command: brew install chromedriver"
-  echo "Otherwise install using the instructions at http://www.kenst.com/2015/03/installing-chromedriver-on-mac-osx/"
-  exit 1
-}
+# command -v chromedriver >/dev/null 2>&1 || {
+#   echo "This app requires chromedriver to be installed, but it was not found on your system."
+#   echo "If you have HomeBrew, install with this command: brew install chromedriver"
+#   echo "Otherwise install using the instructions at http://www.kenst.com/2015/03/installing-chromedriver-on-mac-osx/"
+#   exit 1
+# }
 
 echo "----------------------------------------------------------"
 echo "Ensuring Hex is installed..."
@@ -50,25 +50,18 @@ echo "----------------------------------------------------------"
 echo "Setting up example apps for testing..."
 echo "----------------------------------------------------------"
 
-cd examples/example-phx-1_2 && {
-  mix deps.get;
-  npm install;
-  MIX_ENV=test mix ecto.create;
-  cd -;
-}
-
-cd examples/example-phx-1_3 && {
-  mix deps.get;
-  cd assets && npm install;
-  cd .. && MIX_ENV=test mix ecto.create;
-  cd ../..;
-}
+# cd examples/example_phx_1.5 && {
+#   mix deps.get;
+#   cd assets && npm install;
+#   cd .. && MIX_ENV=test mix ecto.create;
+#   cd ../..;
+# }
 
 echo "----------------------------------------------------------"
 echo "Running tests to verify setup is complete..."
 echo "----------------------------------------------------------"
 
-bin/ci || { exit 1; }
+# bin/ci || { exit 1; }
 
 echo "----------------------------------------------------------"
 echo "Setup complete!"

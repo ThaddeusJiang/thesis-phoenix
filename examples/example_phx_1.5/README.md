@@ -30,8 +30,8 @@ TODO:
 - [ ] dynamic.html Plain Text Area
 - [ ] dynamic.html Image Area
 - [ ] index.html background_image
-- [ ] index.html Welcome Message
-- [ ] index.html Subtitle
-- [ ] index.html Resources
-- [ ] index.html Help
-- [ ] index.html Dynamic Pages
+- [x] index.html Welcome Message
+- [x] index.html Subtitle
+- [x] index.html Resources
+- [x] index.html Help
+- [x] index.html Dynamic Pages

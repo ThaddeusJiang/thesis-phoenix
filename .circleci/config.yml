@@ -34,29 +34,29 @@ jobs:
       - run:
           name: Install mix dependencies
           command: mix deps.get
-      - run:
-          name: Install example app v2 Hex dependencies
-          working_directory: examples/example-phx-1_2
-          command: mix deps.get
-      - run:
-          name: Install example app v3 Hex dependencies
-          working_directory: examples/example-phx-1_3
-          command: |
-            mix deps.get
-      - run:
-          name: Install chromedriver
-          working_directory: ~/chromedriver
-          command: |
-            wget http://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip
-            unzip chromedriver_linux64.zip
-            # sudo apt-get install libnss3
-      - run:
-          name: Start ChromeDriver in the background
-          background: true
-          command: ./chromedriver
-    #   - run:
-    #       name: Run tests
-    #       command: ./bin/ci
+      # - run:
+      #     name: Install example app v2 Hex dependencies
+      #     working_directory: examples/example-phx-1_2
+      #     command: mix deps.get
+      # - run:
+      #     name: Install example app v3 Hex dependencies
+      #     working_directory: examples/example-phx-1_3
+      #     command: |
+      #       mix deps.get
+      # - run:
+      #     name: Install chromedriver
+      #     working_directory: ~/chromedriver
+      #     command: |
+      #       wget http://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip
+      #       unzip chromedriver_linux64.zip
+      #       # sudo apt-get install libnss3
+      # - run:
+      #     name: Start ChromeDriver in the background
+      #     background: true
+      #     command: ./chromedriver
+      #   - run:
+      #       name: Run tests
+      #       command: ./bin/ci
       - save_cache:
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
           paths:
