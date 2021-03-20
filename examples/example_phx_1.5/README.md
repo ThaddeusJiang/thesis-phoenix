@@ -1,5 +1,9 @@
 # Example
 
+Use
+* Elixir 1.11
+* Node.js 14
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
